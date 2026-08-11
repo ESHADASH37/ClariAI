@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | AI Resume Analyser</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --accent-glow: rgba(56, 189, 248, 0.1);
+            --glass-bg: rgba(30, 41, 59, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --electric-blue: #38bdf8;
+            --text-primary: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 0% 0%, var(--accent-glow) 0%, transparent 40%),
+                radial-gradient(circle at 100% 100%, rgba(129, 140, 248, 0.1) 0%, transparent 40%);
+            color: var(--text-primary);
+            margin: 0;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 100px 24px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            margin-bottom: 120px;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            font-weight: 700;
+            background: linear-gradient(135deg, #fff 0%, var(--electric-blue) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 30px;
+        }
+
+        /* --- The AI Visual (SVG + Animation) --- */
+        .hero-visual {
+            position: relative;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .scanner-line {
+            position: absolute;
+            width: 80%;
+            height: 2px;
+            background: var(--electric-blue);
+            box-shadow: 0 0 15px var(--electric-blue);
+            top: 20%;
+            animation: scan 3s infinite ease-in-out;
+        }
+
+        @keyframes scan {
+            0%, 100% { top: 20%; opacity: 0; }
+            50% { top: 80%; opacity: 1; }
+        }
+
+        /* --- How It Works Section --- */
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            position: relative;
+        }
+
+        .process-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--glass-border);
+            padding: 40px 30px;
+            border-radius: 20px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .process-card:hover {
+            border-color: var(--electric-blue);
+            background: rgba(56, 189, 248, 0.05);
+            transform: translateY(-5px);
+        }
+
+        .step-num {
+            width: 40px;
+            height: 40px;
+            background: var(--electric-blue);
+            color: var(--bg-deep);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 20px;
+        }
+
+        /* --- Tech Stack Labels --- */
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .tag {
+            padding: 6px 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+        }
+
+        @media (max-width: 768px) {
+            .hero, .process-grid { grid-template-columns: 1fr; }
+            .hero-text h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <section class="hero">
+        <div class="hero-text">
+            <h1>We decode the science of hiring.</h1>
+            <p>Our AI Resume Analyser uses Large Language Models to bridge the gap between your talent and industry-standard ATS algorithms.</p>
+            <div class="tech-tags">
+                <span class="tag">NLP</span>
+                <span class="tag">Python</span>
+                <span class="tag">Machine Learning</span>
+                <span class="tag">ATS Parsing</span>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="scanner-line"></div>
+            <svg width="120" height="150" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+        </div>
+    </section>
+
+    <div class="section-title">
+        <h2>The Analysis Process</h2>
+        <p style="color: var(--text-muted)">Three steps to a perfect career match.</p>
+    </div>
+
+    
+
+    <section class="process-grid">
+        <div class="process-card">
+            <div class="step-num">1</div>
+            <h3>Deep Parsing</h3>
+            <p style="color: var(--text-muted)">Our NLP engine extracts skills, experience, and education with 99% accuracy from any PDF/Doc format.</p>
+        </div>
+
+        <div class="process-card">
+            <div class="step-num">2</div>
+            <h3>Contextual Matching</h3>
+            <p style="color: var(--text-muted)">We don't just find keywords; our AI understands the context of your achievements vs. the job requirements.</p>
+        </div>
+
+        <div class="process-card">
+            <div class="step-num">3</div>
+            <h3>Smart Insights</h3>
+            <p style="color: var(--text-muted)">Get an ATS score and actionable advice on exactly what to change to land your dream interview.</p>
+        </div>
+    </section>
+</div>
+
+</body>
+</html>
