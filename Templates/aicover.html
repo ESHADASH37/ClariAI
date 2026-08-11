@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Cover Letter | ResuMind</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=EB+Garamond:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #020617;
+            color: #f1f5f9;
+        }
+        .mesh-bg {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%; z-index: -1;
+            background: radial-gradient(circle at 10% 10%, rgba(37, 99, 235, 0.1) 0%, transparent 40%),
+                        radial-gradient(circle at 90% 90%, rgba(168, 85, 247, 0.1) 0%, transparent 40%);
+        }
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        /* The "Paper" Look */
+        .letter-paper {
+            background: white;
+            color: #1e293b;
+            font-family: 'EB Garamond', serif;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            min-height: 600px;
+            position: relative;
+        }
+        .custom-loader {
+            width: 50px;
+            height: 10px;
+            background: radial-gradient(circle closest-side,#2563eb 90%,#0000) 0%   50%,
+                        radial-gradient(circle closest-side,#2563eb 90%,#0000) 50%  50%,
+                        radial-gradient(circle closest-side,#2563eb 90%,#0000) 100% 50%;
+            background-size: calc(100%/3) 100%;
+            background-repeat: no-repeat;
+            animation: d7 1s infinite linear;
+        }
+        @keyframes d7 { 33%{background-size:calc(100%/3) 0%  ,calc(100%/3) 100%,calc(100%/3) 100%} 66%{background-size:calc(100%/3) 100%,calc(100%/3) 0%  ,calc(100%/3) 100%} }
+    </style>
+</head>
+<body class="antialiased">
+    <div class="mesh-bg"></div>
+
+    <nav class="flex items-center justify-between px-10 py-4 bg-slate-950/50 backdrop-blur-md border-b border-white/10 sticky top-0 z-50">
+        <div class="text-2xl font-bold text-blue-500">Resu<span class="text-white">Mind</span></div>
+        <div class="flex items-center space-x-8 text-sm font-medium">
+            <a href="/" class="text-gray-400 hover:text-white transition">Home</a>
+            <a href="/ats" class="text-gray-400 hover:text-white transition">ATS Analyzer</a>
+            <a href="#" class="text-blue-400 border-b-2 border-blue-400 pb-1">AI Cover Letter</a>
+        </div>
+        <a href="/dashboard" class="bg-white/5 border border-white/10 px-4 py-2 rounded-lg text-sm hover:bg-white/10 transition">Dashboard</a>
+    </nav>
+
+    <main class="max-w-7xl mx-auto px-6 py-10">
+        <div class="grid lg:grid-cols-2 gap-10">
+            
+            <div class="space-y-6">
+                <div>
+                    <h1 class="text-3xl font-extrabold mb-2">AI Cover Letter <span class="text-blue-500">Architect</span></h1>
+                    <p class="text-slate-400">Generate a high-converting, tailored cover letter in seconds.</p>
+                </div>
+
+                <div class="glass-panel p-6 rounded-3xl space-y-4">
+                    <div>
+                        <label class="block text-xs font-bold text-blue-400 uppercase tracking-widest mb-2">Resume Context</label>
+                        <textarea id="resume-input" rows="6" class="w-full bg-slate-900/50 border border-white/5 rounded-xl p-4 text-sm focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Paste your resume details..."></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-purple-400 uppercase tracking-widest mb-2">Job Description</label>
+                        <textarea id="jd-input" rows="6" class="w-full bg-slate-900/50 border border-white/5 rounded-xl p-4 text-sm focus:ring-2 focus:ring-purple-500 outline-none" placeholder="Paste the target job description..."></textarea>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-[10px] text-slate-500 uppercase font-bold mb-1">Tone of Voice</label>
+                            <select id="tone" class="w-full bg-slate-800 border-none rounded-lg p-2 text-sm outline-none">
+                                <option>Professional</option>
+                                <option>Creative</option>
+                                <option>Confident</option>
+                            </select>
+                        </div>
+                        <div class="flex items-end">
+                            <button onclick="generateLetter()" class="w-full bg-blue-600 hover:bg-blue-500 py-2 rounded-lg font-bold transition-all shadow-lg shadow-blue-500/20 active:scale-95">
+                                <i class="fas fa-sparkles mr-2"></i> Generate
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="relative">
+                <div id="loading-state" class="absolute inset-0 z-10 flex flex-col items-center justify-center bg-slate-950/80 rounded-3xl hidden">
+                    <div class="custom-loader mb-4"></div>
+                    <p class="text-blue-400 font-bold animate-pulse">AI is crafting your story...</p>
+                </div>
+
+                <div class="flex justify-between items-center mb-4">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-widest">Document Preview</span>
+                    <div class="flex gap-2">
+                        <button onclick="copyText()" class="p-2 hover:bg-white/5 rounded-lg text-slate-400" title="Copy"><i class="fas fa-copy"></i></button>
+                        <button class="p-2 hover:bg-white/5 rounded-lg text-slate-400" title="Download PDF"><i class="fas fa-file-pdf"></i></button>
+                    </div>
+                </div>
+
+                <div class="letter-paper rounded-sm p-12 text-lg overflow-y-auto max-h-[700px]">
+                    <div id="letter-content" class="whitespace-pre-line leading-relaxed">
+                        [Your Letter Will Appear Here]
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function generateLetter() {
+            const resume = document.getElementById('resume-input').value;
+            const jd = document.getElementById('jd-input').value;
+
+            if(!resume || !jd) {
+                alert("Please provide both Resume and Job Description context.");
+                return;
+            }
+
+            // Show loading
+            document.getElementById('loading-state').classList.remove('hidden');
+            
+            // Mock AI Content Generation
+            setTimeout(() => {
+                document.getElementById('loading-state').classList.add('hidden');
+                const content = `Dear Hiring Manager,
+
+I am writing to express my strong interest in the position described in your recent job posting. With a robust background in the skills you are seeking, including my proven expertise found in my professional experience, I am confident that I can add immediate value to your team.
+
+Throughout my career, I have consistently demonstrated a commitment to high-quality results and strategic problem-solving. Your requirement for someone who understands industry-standard workflows aligns perfectly with my previous achievements where I successfully navigated similar challenges.
+
+I am particularly drawn to your company's mission and look forward to the possibility of discussing how my unique blend of skills can contribute to your continued success.
+
+Sincerely,
+[Your Name]`;
+
+                typeWriter(content, 'letter-content');
+            }, 1500);
+        }
+
+        function typeWriter(text, elementId) {
+            const element = document.getElementById(elementId);
+            element.innerHTML = "";
+            let i = 0;
+            const speed = 15; // ms per character
+
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        function copyText() {
+            const text = document.getElementById('letter-content').innerText;
+            navigator.clipboard.writeText(text);
+            alert("Cover letter copied to clipboard!");
+        }
+    </script>
+</body>
+</html>
