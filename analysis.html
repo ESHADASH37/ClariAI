@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results | AI Resume Analyser</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --glass: rgba(30, 41, 59, 0.5);
+            --border: rgba(255, 255, 255, 0.1);
+            --electric-blue: #38bdf8;
+            --success-green: #10b981;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            background-image: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.1) 0%, transparent 50%);
+            color: var(--text-main);
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .dashboard-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* --- Header / Score Section --- */
+        .results-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: center;
+        }
+
+        .ats-circle-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 40px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+        }
+
+        .circular-progress {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: conic-gradient(var(--electric-blue) 85%, #1e293b 0deg); /* 85 is the score */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            position: relative;
+        }
+
+        .circular-progress::before {
+            content: "85%";
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            background: var(--bg-deep);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        /* --- Analysis Grid --- */
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .analysis-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 24px;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .card-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Progress Bar for Skill/Exp Match */
+        .progress-bar-bg {
+            width: 100%;
+            height: 8px;
+            background: #1e293b;
+            border-radius: 10px;
+            margin-top: 10px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 10px;
+            background: var(--electric-blue);
+            box-shadow: 0 0 10px var(--electric-blue);
+        }
+
+        /* Suggested Projects Tags */
+        .tags-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .tag-project {
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--electric-blue);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+        }
+
+        /* AI Suggestions List */
+        .suggestions-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .suggestions-list li {
+            padding-left: 25px;
+            position: relative;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+            color: var(--text-dim);
+        }
+
+        .suggestions-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--electric-blue);
+        }
+
+        /* Fit Prediction Badge */
+        .fit-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--success-green);
+            color: #fff;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .results-header { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="dashboard-container">
+    
+    <div class="results-header">
+        <div class="ats-circle-card">
+            <div class="circular-progress"></div>
+            <h3>Overall ATS Score</h3>
+            <p style="color: var(--text-dim)">Excellent Match</p>
+        </div>
+
+        <div class="analysis-card">
+            <div class="card-title">Job Role Fit Prediction <span class="fit-badge">High Match</span></div>
+            <h2 style="margin: 10px 0;">Senior Full Stack Developer</h2>
+            <p style="color: var(--text-dim)">Your profile shows strong alignment with the technical requirements for this role, specifically in React and Cloud Architecture.</p>
+            <button onclick="window.print()" style="background: none; border: 1px solid var(--electric-blue); color: var(--electric-blue); padding: 8px 15px; border-radius: 8px; cursor: pointer; margin-top: 10px;">Download Report PDF</button>
+        </div>
+    </div>
+
+    <div class="analysis-grid">
+        
+        <div class="analysis-card">
+            <div class="card-title">Skill Match Score <span>78%</span></div>
+            <div class="progress-bar-bg"><div class="progress-fill" style="width: 78%;"></div></div>
+            <p style="font-size: 0.85rem; margin-top: 15px; color: var(--text-dim);">Missing critical keywords: <b>GraphQL, Docker, Kubernetes.</b></p>
+        </div>
+
+        <div class="analysis-card">
+            <div class="card-title">Experience Relevance <span>92%</span></div>
+            <div class="progress-bar-bg"><div class="progress-fill" style="width: 92%; background: var(--success-green);"></div></div>
+            <p style="font-size: 0.85rem; margin-top: 15px; color: var(--text-dim);">Your 5 years at TechCorp aligns perfectly with the seniority level required.</p>
+        </div>
+
+        <div class="analysis-card">
+            <div class="card-title">Keyword Match Analysis</div>
+            <div class="tags-container">
+                <span class="tag-project" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: #10b981;">✓ React</span>
+                <span class="tag-project" style="background: rgba(16, 185, 129, 0.1); color: #10b981; border-color: #10b981;">✓ Node.js</span>
+                <span class="tag-project" style="background: rgba(239, 68, 68, 0.1); color: #ef4444; border-color: #ef4444;">✗ AWS Lambda</span>
+                <span class="tag-project">TypeScript</span>
+            </div>
+        </div>
+
+        <div class="analysis-card" style="grid-row: span 2;">
+            <div class="card-title">AI Improvement Suggestions</div>
+            <ul class="suggestions-list">
+                <li>Quantify your achievements (e.g., "Increased efficiency by 20%").</li>
+                <li>Add a dedicated "Technical Skills" section for better parsing.</li>
+                <li>Rewrite your summary to mention "Distributed Systems" specifically.</li>
+                <li>Ensure your contact info is in the header, not the footer.</li>
+            </ul>
+        </div>
+
+        <div class="analysis-card">
+            <div class="card-title">Suggested Project Ideas</div>
+            <div class="tags-container">
+                <span class="tag-project">Build a Serverless API</span>
+                <span class="tag-project">Microservices Orchestration</span>
+                <span class="tag-project">React Dashboard with Tailwind</span>
+            </div>
+        </div>
+
+        <div class="analysis-card">
+            <div class="card-title">Resume Quality Score <span>High</span></div>
+            <p style="color: var(--text-dim); font-size: 0.9rem;">Your formatting is clean, uses professional fonts, and avoids tables/columns which can confuse older ATS systems.</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
