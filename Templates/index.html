@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>ResuMind - AI Resume Analyzer</title>
+
+    <!-- ✅ Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 text-black"  style="font-family: 'Poppins', sans-serif;" >
+
+    <!-- ✅ NAVBAR -->
+    <nav class="flex items-center justify-between px-10 py-4 bg-white shadow-md sticky top-0 z-50">
+    <div class="text-2xl font-bold text-blue-600">
+        ResuMind
+    </div>
+
+    <div class="flex items-center space-x-8">
+        <a href="/resume-builder" class="text-gray-700 hover:text-blue-600 font-medium transition">Resume Builder</a>
+
+        <div class="relative group">
+            <button class="flex items-center text-gray-700 group-hover:text-blue-600 font-medium py-2 focus:outline-none">
+                Product <span class="ml-1 text-xs transition-transform group-hover:rotate-180">▼</span>
+            </button>
+            
+            <div class="absolute left-0 hidden group-hover:block pt-2 w-48 transition-all">
+                <div class="bg-white shadow-xl rounded-xl border border-gray-100 overflow-hidden">
+                    <a href="/resume-builder" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Resume Builder</a>
+                    <a href="/ats" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">ATS Analyzer</a>
+                    <a href="/aicover" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">AI Cover Letters</a>
+                    <a href="/temp" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Templates</a>
+                    <a href="/pricing" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Pricing</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="relative group">
+            <button class="flex items-center text-gray-700 group-hover:text-blue-600 font-medium py-2 focus:outline-none">
+                Resources <span class="ml-1 text-xs transition-transform group-hover:rotate-180">▼</span>
+            </button>
+
+            <div class="absolute left-0 hidden group-hover:block pt-2 w-40 transition-all">
+                <div class="bg-white shadow-xl rounded-xl border border-gray-100 overflow-hidden">
+                    <a href="/blog" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Blog</a>
+                    <a href="/faq" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">FAQ</a>
+                    <a href="/support" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">Support</a>
+                    <a href="/about" class="block px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition">About</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex items-center space-x-4">
+        <button onclick="toggleTheme()" 
+                class="px-3 py-2 rounded-lg border border-gray-200 text-gray-700 hover:bg-gray-50 transition">
+            🌙
+        </button>
+
+        <a href="/signup" class="bg-blue-600 text-white px-6 py-2.5 rounded-lg font-semibold hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 transition-all">
+            Get Started
+        </a>
+    </div>
+</nav>
+
+  
+
+    <!-- ✅ HERO SECTION -->
+<section class="flex flex-col items-center justify-center text-center mt-20 px-4">
+
+  <!-- Heading -->
+  <h1 class="text-5xl font-extrabold text-gray-800 leading-tight mb-6">
+    Improve Your Resume with 
+    <span class="text-blue-600">AI Power</span>
+  </h1>
+
+  <!-- Subheading -->
+  <p class="text-lg text-gray-600 max-w-2xl mb-8">
+    Get instant ATS scores, smart suggestions, and stand out to recruiters with ResuMind.
+  </p>
+
+  <!-- Buttons -->
+  <div class="flex space-x-4">
+
+    <a href="/resume-builder" 
+       class="bg-blue-600 text-white px-6 py-3 rounded-lg text-lg hover:bg-blue-700 shadow-md">
+       Analyze Resume
+    </a>
+
+    <a href="/about" 
+       class="border border-gray-300 px-6 py-3 rounded-lg text-lg hover:bg-gray-100">
+       Learn More
+    </a>
+
+  </div>
+  <!-- ✅ HOW IT WORKS SECTION -->
+<section class="bg-blue-50 py-16 w-full mt-20">
+
+  <!-- Heading -->
+  <div class="text-center mb-12">
+    <h2 class="text-3xl font-bold text-gray-800">
+      How This AI Resume Analyzer Works
+    </h2>
+    <p class="text-gray-600 mt-2">
+      Simple steps to improve your resume instantly
+    </p>
+  </div>
+
+  <!-- Cards -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+
+    <!-- Card 1 -->
+    <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition">
+      <div class="text-blue-600 text-xl font-bold mb-3">Step 1</div>
+      <h3 class="text-lg font-semibold mb-2">Upload Resume</h3>
+      <p class="text-gray-600 text-sm">
+        Upload your resume in PDF format to get started.
+      </p>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition">
+      <div class="text-blue-600 text-xl font-bold mb-3">Step 2</div>
+      <h3 class="text-lg font-semibold mb-2">AI Analysis</h3>
+      <p class="text-gray-600 text-sm">
+        Our AI scans your resume for skills, keywords, and formatting.
+      </p>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition">
+      <div class="text-blue-600 text-xl font-bold mb-3">Step 3</div>
+      <h3 class="text-lg font-semibold mb-2">Get Insights</h3>
+      <p class="text-gray-600 text-sm">
+        Receive ATS score, missing skills,improvement tips and resume vs job description match.
+      </p>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="bg-white p-6 rounded-xl shadow-md text-center hover:shadow-lg transition">
+      <div class="text-blue-600 text-xl font-bold mb-3">Step 4</div>
+      <h3 class="text-lg font-semibold mb-2">Improve Resume</h3>
+      <p class="text-gray-600 text-sm">
+        Apply suggestions and boost your chances of selection.
+      </p>
+    </div>
+
+  </div>
+  
+
+</section>
+<!-- ✅ AI ANALYZER SECTION -->
+<section class="py-20 bg-white">
+
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800">
+        Try Our Free AI Resume Analyzer
+      </h2>
+      <p class="text-gray-600 mt-3">
+        Paste your resume and job description to get instant insights and improve your chances.
+      </p>
+    </div>
+
+    <!-- Card -->
+    <div class="bg-gray-50 p-8 rounded-2xl shadow-md">
+
+      <form action="/analyze" method="post" class="space-y-6">
+
+        <!-- Resume Input -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">
+            Your Resume
+          </label>
+          <textarea name="resume" rows="6"
+            placeholder="Paste your resume content here..."
+            class="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        </div>
+
+        <!-- Job Description -->
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">
+            Job Description
+          </label>
+          <textarea name="job_desc" rows="6"
+            placeholder="Paste job description here..."
+            class="w-full p-4 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"></textarea>
+        </div>
+
+        <!-- Button -->
+      <button type="submit"
+  class="bg-blue-600 text-white px-8 py-3 rounded-lg text-lg hover:bg-blue-700 shadow-md mt-6">
+  Analyze Now
+</button>
+         
+        
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ✅ WHAT STUDENTS SAY SECTION -->
+<section class="w-full py-10 mt-8 bg-gradient-to-br from-blue-200 via-blue-50 to-white">
+<div class="absolute -top-40 -left-40 w-[400px] h-[400px] bg-blue-300 opacity-30 blur-3xl rounded-full"></div>
+<div class="absolute -bottom-40 -right-40 w-[400px] h-[400px] bg-blue-200 opacity-30 blur-3xl rounded-full"></div>
+  <div class="max-w-6xl mx-auto px-6 pb-2">
+
+    <!-- Heading -->
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-800">
+        What Students Say About <span class="text-blue-600">ResuMind</span>
+      </h2>
+      <p class="text-gray-600 mt-3">
+        Feedback from students improving their resumes with AI
+      </p>
+    </div>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+      <!-- Card 1 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+
+        <!-- Name -->
+        <h3 class="font-semibold text-gray-800 mb-2">
+          Aarav
+        </h3>
+
+        <!-- Description -->
+        <p class="text-gray-600 text-sm mb-4">
+          Helped me understand what was missing in my resume. Very easy and effective tool for placements.
+        </p>
+
+        <!-- Stars -->
+        <div class="text-yellow-400 text-sm">
+          ⭐⭐⭐⭐⭐
+        </div>
+
+      </div>
+
+      <!-- Card 2 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+
+        <h3 class="font-semibold text-gray-800 mb-2">
+          Priya
+        </h3>
+
+        <p class="text-gray-600 text-sm mb-4">
+          The ATS score feature helped me improve my resume structure and keywords.
+        </p>
+
+        <div class="text-yellow-400 text-sm">
+          ⭐⭐⭐⭐
+        </div>
+
+      </div>
+
+      <!-- Card 3 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+
+        <h3 class="font-semibold text-gray-800 mb-2">
+          Rahul
+        </h3>
+
+        <p class="text-gray-600 text-sm mb-4">
+          Clean UI and simple steps. I improved my resume in just a few minutes.
+        </p>
+
+        <div class="text-yellow-400 text-sm">
+          ⭐⭐⭐⭐⭐
+        </div>
+
+      </div>
+
+      <!-- Card 4 -->
+      <div class="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition">
+
+        <h3 class="font-semibold text-gray-800 mb-2">
+          Sneha
+        </h3>
+
+        <p class="text-gray-600 text-sm mb-4">
+          Great project for students preparing for placements. Very useful insights.
+        </p>
+
+        <div class="text-yellow-400 text-sm">
+          ⭐⭐⭐⭐
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="w-full py-14 bg-gradient-to-br from-blue-200 via-blue-50 to-white">
+
+  <div class="max-w-5xl mx-auto px-6">
+
+    <!-- Heading -->
+    <div class="text-center mb-10">
+      <h2 class="text-3xl font-bold text-gray-800">
+        Frequently Asked <span class="text-blue-600">Questions</span>
+      </h2>
+      <p class="text-gray-600 mt-2">
+        Everything you need to know about ResuMind
+      </p>
+    </div>
+
+    <!-- FAQ Items -->
+    <div class="space-y-4">
+
+      <!-- FAQ 1 -->
+      <div class="bg-white rounded-xl shadow-md p-5">
+        <details class="cursor-pointer">
+          <summary class="font-semibold text-gray-800">
+            How does the AI resume analyzer work?
+          </summary>
+          <p class="text-gray-600 mt-3 text-sm">
+            Our AI scans your resume, checks formatting, keywords, ATS compatibility, and gives you actionable improvement suggestions instantly.
+          </p>
+        </details>
+      </div>
+
+      <!-- FAQ 2 -->
+      <div class="bg-white rounded-xl shadow-md p-5">
+        <details class="cursor-pointer">
+          <summary class="font-semibold text-gray-800">
+            Is my resume data safe?
+          </summary>
+          <p class="text-gray-600 mt-3 text-sm">
+            Yes, your data is completely secure. We do not store or share your resume without permission.
+          </p>
+        </details>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="bg-white rounded-xl shadow-md p-5">
+        <details class="cursor-pointer">
+          <summary class="font-semibold text-gray-800">
+            Can I improve ATS score using this tool?
+          </summary>
+          <p class="text-gray-600 mt-3 text-sm">
+            Yes, the tool suggests ATS-friendly keywords and formatting improvements to increase your chances of getting shortlisted.
+          </p>
+        </details>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="bg-white rounded-xl shadow-md p-5">
+        <details class="cursor-pointer">
+          <summary class="font-semibold text-gray-800">
+            Is this free to use?
+          </summary>
+          <p class="text-gray-600 mt-3 text-sm">
+            Yes, basic resume analysis is free. Premium features may include advanced insights and career suggestions.
+          </p>
+        </details>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+<section class="w-full py-16 relative overflow-hidden 
+bg-gradient-to-br from-blue-300 via-pink-200 to-green-200">
+
+  <!-- Background glow effects (premium feel) -->
+  <div class="absolute -top-40 -left-40 w-[400px] h-[400px] bg-blue-300 opacity-30 blur-3xl rounded-full"></div>
+  <div class="absolute -bottom-40 -right-40 w-[400px] h-[400px] bg-pink-300 opacity-30 blur-3xl rounded-full"></div>
+  <div class="absolute top-20 right-20 w-[300px] h-[300px] bg-green-300 opacity-20 blur-3xl rounded-full"></div>
+
+  <!-- Foreground Card -->
+  <div class="max-w-4xl mx-auto px-6 relative z-10">
+
+    <div class="bg-white/80 backdrop-blur-md rounded-2xl shadow-xl p-10 text-center">
+
+      <!-- Heading -->
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+        Ready to <span class="text-blue-600">optimize</span> your resume?
+      </h2>
+
+      <!-- Subtext -->
+      <p class="text-gray-600 mt-4 text-sm md:text-base leading-relaxed">
+        Join thousands of job seekers who are improving their resumes with AI-powered insights.
+        Get instant feedback, ATS scoring, and personalized suggestions to land your dream job faster.
+      </p>
+
+      <!-- Button -->
+      <div class="mt-8">
+        <a href="/signup" class="px-8 py-3 rounded-full text-white font-semibold
+        bg-gradient-to-r from-green-400 via-blue-500 to-pink-500
+        transition transform hover:scale-110 duration-300 shadow-lg">
+
+          Get Started Now
+      </a>
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+</section>
+<footer class="w-full bg-gradient-to-br from-blue-50 via-white to-blue-100 pt-16 pb-10">
+
+  <div class="max-w-6xl mx-auto px-6">
+
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-10">
+
+      <!-- Brand Section -->
+      <div>
+        <h2 class="text-2xl font-extrabold !text-blue-600">
+          ResuMind
+        </h2>
+
+        <p class="text-gray-600 text-sm mt-3 leading-relaxed">
+          AI-powered resume analyzer that helps students and job seekers optimize their resumes,
+          improve ATS score, and land their dream jobs faster.
+        </p>
+
+        <!-- Social Icons -->
+        <div class="flex gap-4 mt-5 text-gray-600">
+
+          <a href="#" class="hover:text-blue-600 transition">LinkedIn</a>
+          <a href="#" class="hover:text-blue-400 transition">Twitter</a>
+          <a href="#" class="hover:text-blue-700 transition">Facebook</a>
+
+        </div>
+      </div>
+
+      <!-- Product -->
+      <div>
+        <h3 class="font-semibold text-gray-800 mb-3">Product</h3>
+        <ul class="space-y-2 text-sm text-gray-600">
+
+          <li class="hover:text-blue-600 cursor-pointer">Resume Analyzer</li>
+          <li class="hover:text-blue-600 cursor-pointer">ATS Score Checker</li>
+          <li class="hover:text-blue-600 cursor-pointer">Resume Suggestions</li>
+          <li class="hover:text-blue-600 cursor-pointer">Cover Letter Builder</li>
+
+        </ul>
+      </div>
+
+      <!-- Resources -->
+      <div>
+        <h3 class="font-semibold text-gray-800 mb-3">Resources</h3>
+        <ul class="space-y-2 text-sm text-gray-600">
+
+          <li class="hover:text-blue-600 cursor-pointer">Resume Tips</li>
+          <li class="hover:text-blue-600 cursor-pointer">Career Blog</li>
+          <li class="hover:text-blue-600 cursor-pointer">Interview Guide</li>
+          <li class="hover:text-blue-600 cursor-pointer">FAQs</li>
+
+        </ul>
+      </div>
+
+      <!-- Policies -->
+      <div>
+        <h3 class="font-semibold text-gray-800 mb-3">Policies</h3>
+        <ul class="space-y-2 text-sm text-gray-600">
+
+          <li class="hover:text-blue-600 cursor-pointer">Privacy Policy</li>
+          <li class="hover:text-blue-600 cursor-pointer">Terms of Use</li>
+          <li class="hover:text-blue-600 cursor-pointer">Cookie Policy</li>
+          <li class="hover:text-blue-600 cursor-pointer">Contact Us</li>
+
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="border-t mt-10 pt-6 text-center text-sm text-gray-500">
+      © 2026 ResumeMind. All rights reserved.
+    </div>
+
+  </div>
+
+</footer>
+    
+    <script>
+  function toggleTheme() {
+    document.body.classList.toggle("bg-gray-900");
+    document.body.classList.toggle("text-white");
+    document.body.classList.toggle("bg-gray-100");
+    document.body.classList.toggle("text-black");
+  }
+</script>
+
+</body>
+</html>
