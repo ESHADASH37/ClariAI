@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Dark FAQ</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-deep: #050a18;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --glass-bg: rgba(30, 41, 59, 0.5);
+            --glass-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --electric-blue: #38bdf8;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-deep);
+            background-image: 
+                radial-gradient(circle at 20% 20%, var(--accent-glow) 0%, transparent 40%),
+                radial-gradient(circle at 80% 80%, rgba(129, 140, 248, 0.1) 0%, transparent 40%);
+            color: var(--text-primary);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .faq-wrapper {
+            width: 100%;
+            max-width: 700px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 12px;
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            border-radius: 20px;
+            color: var(--electric-blue);
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+            -webkit-background-clip: text;
+            -webkit-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        /* The Accordion Logic */
+        .faq-card {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            background: rgba(30, 41, 59, 0.7);
+            box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
+        }
+
+        .faq-trigger {
+            width: 100%;
+            padding: 24px;
+            background: none;
+            border: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            text-align: left;
+            outline: none;
+        }
+
+        .faq-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            transition: color 0.3s;
+        }
+
+        /* Glowing toggle icon */
+        .chevron {
+            width: 32px;
+            height: 32px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .chevron svg {
+            width: 18px;
+            height: 18px;
+            stroke: var(--text-secondary);
+            transition: transform 0.3s, stroke 0.3s;
+        }
+
+        .faq-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            padding: 0 24px;
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Active State */
+        .faq-card.active {
+            border-color: var(--electric-blue);
+            background: rgba(15, 23, 42, 0.8);
+        }
+
+        .faq-card.active .faq-title {
+            color: var(--electric-blue);
+        }
+
+        .faq-card.active .faq-content {
+            max-height: 200px;
+            padding-bottom: 24px;
+        }
+
+        .faq-card.active .chevron {
+            background: var(--electric-blue);
+        }
+
+        .faq-card.active .chevron svg {
+            transform: rotate(180deg);
+            stroke: #000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="faq-wrapper">
+    <div class="header-section">
+        <span class="badge">Support Center</span>
+        <h1>Got Questions?</h1>
+    </div>
+
+    <div class="faq-card">
+        <button class="faq-trigger">
+            <span class="faq-title">What technologies do you use?</span>
+            <div class="chevron">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+        </button>
+        <div class="faq-content">
+            We leverage cutting-edge tech stacks including React, Node.js, and advanced AI models to ensure your application is fast, scalable, and future-proof.
+        </div>
+    </div>
+
+    <div class="faq-card">
+        <button class="faq-trigger">
+            <span class="faq-title">How secure is my data?</span>
+            <div class="chevron">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+        </button>
+        <div class="faq-content">
+            Data security is our DNA. Every bit of information is encrypted using AES-256 protocols and hosted in highly secure, compliant data centers.
+        </div>
+    </div>
+
+    <div class="faq-card">
+        <button class="faq-trigger">
+            <span class="faq-title">Is there a free trial available?</span>
+            <div class="chevron">
+                <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+        </button>
+        <div class="faq-content">
+            Yes, you can explore all our features for 14 days without a credit card. We believe in our product, and we want you to experience it firsthand.
+        </div>
+    </div>
+</div>
+
+<script>
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+        trigger.addEventListener('click', () => {
+            const card = trigger.parentElement;
+            
+            // Toggle active class
+            card.classList.toggle('active');
+
+            // Close other cards for that clean, professional feel
+            document.querySelectorAll('.faq-card').forEach(otherCard => {
+                if (otherCard !== card) {
+                    otherCard.classList.remove('active');
+                }
+            });
+        });
+    });
+</script>
+
+</body>
+</html>
